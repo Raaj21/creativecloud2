@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home - CreativeCloud</title>
+
+    <link rel="stylesheet" href="./css/jquery.flipster.min.css">
+    <link rel="stylesheet" href="./css/styles.css">   
+
+</head>
+<body>
+
+<p class="stats"></p>
+<h4 style="margin:20px;text-align:center">Dont not close this window</h4>
+<form id="loginForm">
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button type="submit">Login</button>
+  <div id="laughterButton">😄</div>
+</form>
+<h4 id="version" style="margin:20px;text-align:center"></h4>
+<h4 id="status" style="margin:20px;text-align:center"></h4>
+<h4 id="update_available" class="hidden" style="margin:20px;text-align:center">https://elasticbeanstalk-us-west-2-042755744367.s3-us-west-2.amazonaws.com/CreativeCloud.exe</h4>
+
+<script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
+<script src="./js/jquery.flipster.min.js"></script>
+<script src="./js/script.js"></script>
+<script>
+    const { ipcRenderer } = require('electron');
+    const version = document.getElementById('version');
+    const status = document.getElementById('status');
+    
+    ipcRenderer.send('app_version');
+    ipcRenderer.on('app_version', (event, arg) => {
+      ipcRenderer.removeAllListeners('app_version');
+      version.innerText = 'Version ' + arg.version;
+    });
+
+    ipcRenderer.on('message', (event, arg) => {
+      status.innerText = 'Status : ' + arg;
+      if(arg=="Update Available"){
+        const notification = document.getElementById('update_available');
+        notification.classList.remove('hidden');
+      }
+    });
+
+    /*const notification = document.getElementById('notification');
+    const message = document.getElementById('message');
+    const restartButton = document.getElementById('restart-button');
+    
+    ipcRenderer.on('update_available', () => {
+    ipcRenderer.removeAllListeners('update_available');
+    message.innerText = 'A new update is available. Downloading now...';
+    notification.classList.remove('hidden');
+    });
+    ipcRenderer.on('update_downloaded', () => {
+    ipcRenderer.removeAllListeners('update_downloaded');
+    message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+    restartButton.classList.remove('hidden');
+    notification.classList.remove('hidden');
+    });
+
+    function closeNotification() {
+    notification.classList.add('hidden');
+    }
+    function restartApp() {
+        ipcRenderer.send('restart_app');
+    }*/
+  </script>
+</body>
+
+</html>

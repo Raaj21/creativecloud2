@@ -1,0 +1,61 @@
+{
+  "name": "electron",
+  "version": "1.2.0",
+  "description": "PUC application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "keywords": [
+    "CreativeCloud"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CreativeCloudMode/cloudmode.git"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.3.0",
+    "electron": "^4.2.12",
+    "electron-builder": "^22.1.0",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^2.0.0",
+    "bluebird": "^3.5.5",
+    "cookie": "^0.3.1",
+    "crypto": "^1.0.1",
+    "cryptr": "^4.0.2",
+    "dotenv": "^6.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.0.0",
+    "fs-extra": "^8.0.1",
+    "jquery": "^3.4.1",
+    "jsonwebtoken": "^8.5.0",
+    "ncp": "^2.0.0",
+    "node-datetime": "^2.1.2",
+    "node-pre-gyp": "^0.14.0",
+    "node-static": "^0.7.11",
+    "node-webkit-builder": "^1.0.13",
+    "nonce": "^1.0.4",
+    "optimist": "^0.6.1",
+    "pg": "^7.9.0",
+    "popups": "^1.1.3",
+    "pretty-bytes": "^2.0.1",
+    "random-string-generator": "^0.2.0",
+    "rebuild": "^0.1.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "sqlite3": "^4.0.8",
+    "uniqid": "^5.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/CreativeCloudMode/cloudmode/issues"
+  },
+  "homepage": "https://github.com/CreativeCloudMode/cloudmode#readme"
+}
